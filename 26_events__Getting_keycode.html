@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+</head>
+<body ng-app="">
+    <p>Typing in the input vox below updates hthe key count</p>
+    <input ng-keyup="count=count+1" ng-init="count=0" />key up count: {{count}}
+    <br />
+    <p>Typing in the input box below updates the keycode</p>
+    <input ng-keyup="event=$event" />
+    <p>event keycode: {{event.keyCode}}</p>
+    <p>event altkey: {{event.altKey}}</p>
+
+</body>
+</html>
