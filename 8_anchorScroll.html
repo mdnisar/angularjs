@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+    <script>
+        function ScrollCtrl($scope, $location, $anchorScroll) {
+            $scope.gotoBottom = function () {
+                /*
+                // set the location.hash to the id of
+                // the element you wish to scroll to.
+                */
+                $location.hash('bottom');
+                /*
+                call $anchorScroll()
+                When called, it checks current value of $location.hash() 
+                and scrolls to the related element, according to rules 
+                specified in Html5 spec.
+                */
+                $anchorScroll();
+            };
+        }
+    </script>
+    <style>
+        #scrollArea
+        {
+            height:350px;
+            overflow:auto;
+        }
+        #bottom
+        {
+            display:block;
+            margin-top:2000px;
+        }
+    </style>
+</head>
+<body ng-app="">
+    <div id="scrollArea" ng-controller="ScrollCtrl">
+        <a ng-click="gotoBottom()">Go to bottom</a>
+        <a id="bottom"></a>You're at the bottom!
+    </div>
+
+</body>
+</html>

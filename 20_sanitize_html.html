@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+    <script src="angular-sanitize.js"></script>
+    <script>
+        angular.module('bindApp', ['ngSanitize'])
+        .controller('cn', ['$scope', function ($scope) {
+            $scope.myHTML=
+            'I am an <code>HTML</code> strinf with ' +
+            '<a href="#">links</a> and other <em>stuff</em>';
+        }]);
+
+    </script>
+</head>
+<body ng-app="bindApp">
+    <div ng-controller="cn">
+        <p ng-bind-html="myHTML"></p>
+    </div>
+
+</body>
+</html>

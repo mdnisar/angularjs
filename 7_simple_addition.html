@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+    <script>
+        angular.module('Add', [])
+        .controller('ctlr', function ($scope) {
+            $scope.a = 1;
+            $scope.b = 2;
+        });
+    </script>
+</head>
+<body ng-app="Add">
+    <div ng-controller="ctlr">
+        I can add: {{a}} + {{b}} = {{a+b}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+    <script>
+        angular.module('copy', [])
+        .controller('ctlr', ['$scope', function ($scope) {
+            $scope.master = {};
+            $scope.update = function (user) {
+                //ex with 1 arg
+                $scope.master = angular.copy(user);
+            };
+            $scope.reset = function () {
+                //ex with 2 arg
+                angular.copy($scope.master, $scope.user);
+            };
+            $scope.reset();
+        }]);
+    </script>
+</head>
+<body ng-app="copy">
+    <div ng-controller="ctlr">
+        <form novalidate>
+            Name: <input type="text" ng-model="user.name" /><br />
+            E-mail: <input type="text" ng-model="user.email" /><br />
+            Gender: <input type="radio" ng-model="user.gender" value="male" /> male <input type="radio" ng-model="user.gender" value="female" /> female <br />
+            <button ng-click="reset()">RESET</button>
+            <button ng-click="update(user)">SAVE</button>
+        </form>
+        <pre>form= {{user | json}}</pre>
+        <pre>master = {{master | json}}</pre>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+    <script>
+        angular.module('formApp', [])
+        .controller('formctrl', ['$scope', function ($scope) {
+            $scope.userType = 'Guest';
+        }]);
+
+    </script>
+    <style>
+        .my-form
+        {
+            -webkit-transition: all linear 0.5s;
+            transition: all linear 0.5s;
+            background: transparent;
+        }
+
+            .my-form.ng-invalid
+            {
+                background: red;
+            }
+    </style>
+</head>
+<body ng-app="formApp">
+    <form name="myForm" ng-controller="formctrl" class="my-form">
+        use type: <input name="input" ng-model="userType" required />
+        <span class="error" ng-show="myForm.input.$error.required">Required</span><br />
+        <tt>user type={{userType}}</tt><br />
+        <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br />
+        <tt>myForm.input.$errer = {{myForm.input.$error}}</tt><br />
+        <tt>myForm.$valid = {{myForm.$valid}}</tt><br />
+        <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt>
+    </form>
+</body>
+</html>

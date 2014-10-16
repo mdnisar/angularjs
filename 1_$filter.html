@@ -1,0 +1,20 @@
+<html>
+<head>
+	<script src="angular.js"></script>
+	<script src="1_.js"></script>
+    <script>
+        // 1_$filter
+        angular.module('filter', [])
+        .controller('MainCtrl', function ($scope, $filter) {
+            $scope.originalText = 'nisar';
+            $scope.filteredText = $filter('uppercase')($scope.originalText);
+        });
+    </script>
+</head>
+<bodY ng-app="filter">
+	<div ng-controller="MainCtrl">
+		<h3>{{originalText}}</h3>
+		<h3>{{filteredText}}</h3>
+	</div>
+</bodY>
+</html>

@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+</head>
+<body ng-app="">
+    <button ng-click="count = count+1" ng-init="count=0">Increment</button>
+    <button ng-dblclick="count=count+1" ng-init="count=0">
+        Increment on dbl click
+    </button>
+    <button ng-mousemove="count=count+1" ng-init="count=0">Increment (when mouse mouse move)</button>
+    <button ng-mouseleave="count=count+1" ng-init="count=0">Increment (when mouse leave)</button>
+    <button ng-mouseenter="count=count+1" ng-init="count=0">Increment (when mouse enter)</button>
+    <button ng-mouseover="count=count+1" ng-init="count=0">Increment (when mouse over)</button>
+    <button ng-mouseup="count=count+1" ng-init="count=0">Increment (when mouse up)</button>
+    <button ng-mousedown="count=count+1" ng-init="count=0">Increment (when mouse down)</button>
+    <span>count:{{count}}</span>
+    <hr />
+    <input ng-keydown="count=count+1" ng-init="count=0" />
+</body>
+</html>

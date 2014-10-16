@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+    <script>
+        /*
+        .directive ►
+        At a high level, directives are markers on a DOM element 
+        (such as an attribute, element name, comment or CSS class) 
+        that tell AngularJS's HTML compiler ($compile) to attach a specified behavior 
+        to that DOM element or even transform the DOM element and its children.
+        */
+        angular.module('app', []).directive('setFocusIf', function () {
+            return function link($scope, $element, $attr) {
+                $scope.$watch($attr.setFocusIf, function (value) {
+                    if (value) { $element[0].focus(); }
+                });
+            };
+        });
+    </script>
+</head>
+<body ng-app="app">
+    <button ng-click="focusInput=true">Focus</button>
+    <input ng-focus="count=count+1" set-focus-if="focusInput" />
+</body>
+</html>

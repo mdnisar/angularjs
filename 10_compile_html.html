@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+    <script>
+        angular.module('compileApp', [], function ($compileProvider) {
+            // configure new 'compile' directive by passing a directive
+            // factory function. The factory function injects the '$compile'
+            $compileProvider.directive('compile', function ($compile) {
+                //directive factory creates a link function
+                return function (scope, element, attrs) {
+                    scope.$watch(
+                        function (scope) {
+                            return scope.$eval(attrs.compile);
+                        },
+                        function (value) {
+                            element.html(value);
+                            $compile(element.contents())(scope);
+                        }
+                        );
+                };
+            });
+        })
+        .controller('GreeterController', ['$scope', function ($scope) {
+            $scope.name = 'Angular';
+            $scope.html = 'Hello {{name}}';
+        }]);
+    </script>
+</head>
+<body ng-app="compileApp">
+    <div ng-controller="GreeterController">
+        <input ng-model="name" /><br />
+        <textarea ng-model="html"></textarea><br />
+        <div compile="html"></div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+    <script>
+        angular.module('inputApp', [])
+        .controller('ctlr', ['$scope',function($scope){
+            $scope.val = '1';
+        }]);
+    </script>
+    <style>
+        .my-input
+        {
+            -webkit-transition:all linear 0.5s;
+            transition:all linear 0.5s;
+            background:transparent;
+        }
+            .my-input.ng-invalid
+            {
+                color:white;
+                background:red;
+            }
+    </style>
+</head>
+<body ng-app="inputApp">
+    <form name="test" ng-controller="ctlr">
+        update input to see integer is a valid input
+        <input ng-model="val" ng-pattern="/^\d+$/" class="my-input" />
+    </form>
+</body>
+</html>
