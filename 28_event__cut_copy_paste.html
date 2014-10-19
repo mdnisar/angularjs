@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+</head>
+<body ng-app="">
+    <input ng-copy="copied=true" ng-init="copied=false; value='copy me'" ng-model="value" />
+    copied : {{copied}}
+    <br />
+    <input ng-cut="cut=true" ng-init="cut=false; value2='cut me'" ng-model="value2" />
+    cut : {{cut}}
+    <br />
+    <input ng-paste="paste=true" ng-init="paste=false; value3 ='paste me'" ng-model="value3" />
+    paste : {{paste}}
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+    <script>
+        angular.module('ngApp', [])
+        .controller('cn', ['$scope', function ($scope) {
+            $scope.person1 = 'shiva';
+            $scope.person2 = 'bhola';
+            $scope.personCount = 1;
+        }]);
+    </script>
+</head>
+<body ng-app="ngApp">
+    <div ng-controller="cn">
+        Person 1:<input type="text" ng-model="person1" value="shiva" /><br />
+        Person 2:<input type="text" ng-model="person2" value="bhola" /><br />
+        Number of People :<input type="text" ng-model="personCount" value="1" /><br />
+
+        Without offset:
+        <ng-pluralize count="personCount"
+            when="{
+            '1':'Nobody is viewing',
+            'one':'1 person is viewing',
+            'other':'{} people are viewing'
+            }"></ng-pluralize><br />
+
+        With Offset(2):
+        <ng-pluralize count="personCount" offset="2"
+            when="{
+            '0':'Nobody is viewing.',
+            '1':'{{person1}} is viewing',
+            '2':'{{person1}} and {{person2}} are viewing',
+            'one':'{{person1}} and {{person2}} and one other person are viewing',
+            'other':'{{person1}},{{person2}} and {} other people are viewing'
+            }"></ng-pluralize>
+                
+    </div>
+</body>
+</html>

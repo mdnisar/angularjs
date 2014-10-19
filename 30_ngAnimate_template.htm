@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Untitled Page</title>
+
+    <script src="angular.js"></script>
+
+    <script src="angular-animate.js"></script>
+
+    <script>
+    angular.module('ngApp',['ngAnimate'])
+    .controller('cn',['$scope',function($scope){
+        $scope.templates=
+        [
+            {name:'template1',url:'template1.html'},
+            {name:'template2',url:'template2.html'}
+        ];
+        $scope.template=$scope.templates[0];
+    }]);
+
+
+//     angular.module('ngApp', ['ngAnimate'])
+//   .controller('cn', ['$scope', function($scope) {
+//     $scope.templates =
+//       [ { name: 'template1.html', url: 'template1.html'},
+//         { name: 'template2.html', url: 'template2.html'} ];
+//     $scope.template = $scope.templates[0];
+//   }]);
+    </script>
+
+    <style>
+        .slide-animate-container
+        {
+            position: relative;
+            background: white;
+            border: 1px solid black;
+            height: 40px;
+            overflow: hidden;
+        }
+        .slide-animate
+        {
+            padding: 10px;
+        }
+        .slide-animate.ng-enter, .slide-animate.ng-leave
+        {
+            -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+            transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: block;
+            padding: 10px;
+        }
+        .slide-animate.ng-enter
+        {
+            top: -50px;
+        }
+        .slide-animate.ng-enter.ng-enter-active
+        {
+            top: 0;
+        }
+        .slide-animate.ng-leave
+        {
+            top: 0;
+        }
+        .slide-animate.ng-leave.ng-enter-leave
+        {
+            top: -50px;
+        }
+    </style>
+</head>
+<body ng-app="ngApp">
+    <div ng-controller="cn">
+        <select ng-model="template" ng-options="t.name for t in templates">
+            <option value="">(blank)</option>
+        </select>
+        url of the template: <tt>{{template.url}}</tt>
+        <hr />
+        <div class="slide-animate-container">
+            <div class="slide-animate" ng-include="template.url">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+    <style>
+        span
+        {color:black;
+        }
+    </style>
+</head>
+<body ng-app="">
+    <input type="button" value="set color" ng-click="myStyle={color:'red'}" />
+    <input type="button" value="set bg" ng-click="myStyle={'background-color':'blue'}" />
+    <input type="button" value="clear" ng-click="myStyle={}" />
+    <br />
+    <span ng-style="myStyle">Sample Text</span>
+    <pre>myStyle={{myStyle}}</pre>
+</body>
+</html>
