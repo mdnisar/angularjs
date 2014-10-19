@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.js"></script>
+    <script>
+        angular.module('ngApp',[])
+        .directive('pane',function(){
+            return {
+                restrict: 'E',
+                transclude: true,
+                scope: { title: '@' },
+                template:'<div style="border:1px solid black;">'+
+                            '<div style="background-color:gray">{{title}}</div>'+
+                            '<div ng-transclude></div>'+
+                         '</div>'
+            };
+        })
+        .controller('cn',['$scope',function($scope){
+            $scope.title = 'Lorem Ipsum';
+            $scope.text = 'Neque porrp quisquam est qui dolorem ipsum quia dolor...';
+        }]);
+    </script>
+</head>
+<body ng-app="ngApp">
+    <div ng-controller="cn" >
+        <input ng-model="title" /><br />
+        <textarea ng-model="text"></textarea><br />
+        <pane title="{{title}}">{{text}}</pane>
+    </div>
+</body>
+</html>
